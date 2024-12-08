@@ -11,7 +11,7 @@ export default async function Layout({
 }) {
   const session = await getServerSession(authOptions);
   if (!session?.user) {
-    redirect("/home");
+    redirect("/api/auth/signin");
   }
   return (
     <div className="flex pt-14 bg-slate-100 overflow-hidden">
