@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,46 +6,50 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model User{
-id Int @id @default(autoincrement())
-name String?
-email String?  @unique
-number String  @unique
-Password String
-OnRampTranscation OnRampTranscation[]
-Balance Balance[]
-sendTransfers P2PTranscation[] @relation(name: "FromUserRelation")
-reciveTransfers P2PTranscation[] @relation(name: "ToUserRelation")
 
+model User {
+  id               Int              @id @default(autoincrement())
+  name             String?
+  email            String?          @unique
+  number           String           @unique
+  password         String
+  onRampTranscations OnRampTranscation[]
+  balance          Balance?
+  sendTransfers    P2PTranscation[] @relation(name: "FromUserRelation")
+  receiveTransfers P2PTranscation[] @relation(name: "ToUserRelation")
 }
-model Balance{
-  id Int @id @default(autoincrement())
-  userId Int @unique
-  amount Int
-  locked Int
-  user User @relation(fields: [userId],references: [id])
+
+model Balance {
+  id      Int   @id @default(autoincrement())
+  userId  Int   @unique
+  amount  Int   @default(0)
+  locked  Int   @default(0)
+  user    User  @relation(fields: [userId], references: [id])
 }
-model P2PTranscation{
-  id Int @id @default(autoincrement())
-  StartTime DateTime
-  amount Int
+
+model P2PTranscation {
+  id         Int      @id @default(autoincrement())
+  startTime  DateTime @default(now())
+  amount     Int
   fromUserId Int
-  fromUser User @relation(name: "FromUserRelation", fields: [fromUserId],references: [id])
-  toUserId Int
-  toUser User  @relation(name: "ToUserRelation", fields: [toUserId],references: [id])
+  fromUser   User     @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  toUserId   Int
+  toUser     User     @relation(name: "ToUserRelation", fields: [toUserId], references: [id])
 }
-model OnRampTranscation{
-    id Int @id @default(autoincrement())
-    status onRampStatus
-    token String @unique
-    provider String
-    amount  Int
-    StartTime DateTime
-    userId Int
-    user User @relation(fields: [userId],references: [id])
+
+model OnRampTranscation {
+  id        Int          @id @default(autoincrement())
+  status    onRampStatus
+  token     String       @unique
+  provider  String
+  amount    Int
+  startTime DateTime     @default(now())
+  userId    Int
+  user      User         @relation(fields: [userId], references: [id])
 }
-enum onRampStatus{
+
+enum onRampStatus {
   Success
   Failure
-  Processing  
+  Processing
 }

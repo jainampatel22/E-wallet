@@ -4,9 +4,7 @@ import { useState, useRef } from 'react';
 import { Card } from './Card';
 import { Center } from './Center';
 import { Textinput } from './TextInput';
-
 import { p2p } from '../actions/p2p';
-
 export function SendCard() {
   const [number, setNumber] = useState<string>('');
   const [amount, setAmount] = useState('');

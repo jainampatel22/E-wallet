@@ -37,7 +37,7 @@ export const OnRampTransaction = ({
                   {isSentTransactions ? "Sent INR" : "Received INR"}
                 </div>
                 <div className="text-slate-600 text-xs">
-                  {t.time.toDateString()}
+                {new Date(t.time).toDateString()}
                 </div>
               </div>
               <div className="flex flex-col items-end">
