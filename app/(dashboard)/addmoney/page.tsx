@@ -39,7 +39,7 @@ async function getOnRampTransactions() {
   }));
 }
 
-export default async function () {
+export default async function addmoney () {
   const balance = await getBalance();
   const transactions = await getOnRampTransactions();
   return (
@@ -68,3 +68,4 @@ export default async function () {
     </div>
   );
 }
+addmoney.displayName = "Transfer"
