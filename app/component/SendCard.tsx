@@ -10,14 +10,14 @@ export function SendCard() {
   const [amount, setAmount] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [, setDropdownVisible] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null); // Use ref for the input
 
-  const handleNumberSelect = (selectedNumber: string) => {
-    setNumber(selectedNumber);
-    setDropdownVisible(false);
-    inputRef.current?.blur();
-  };
+  // const handleNumberSelect = (selectedNumber: string) => {
+  //   setNumber(selectedNumber);
+  //   setDropdownVisible(false);
+  //   inputRef.current?.blur();
+  // };
 
   const handleBlur = () => {
     setTimeout(() => setDropdownVisible(false), 200);
@@ -31,8 +31,10 @@ export function SendCard() {
       }
       await p2p(number, Number(amount) * 100);
       setMessage('Money sent successfully!');
-    } catch (error) {
-      setMessage('Failed to send money. Please try again.');
+    } catch(error){
+return{
+message:error
+}
     }
   };
 

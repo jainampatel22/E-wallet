@@ -16,7 +16,7 @@ await prisma.onRampTranscation.create({
      userId:Number(userId),
      amount:amount,
      status:"Processing",
-StartTime:new Date(),
+startTime:new Date(),
 token:token,
 provider,
 

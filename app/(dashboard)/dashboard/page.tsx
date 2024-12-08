@@ -1,11 +1,10 @@
+
 import React from "react";
 import { getServerSession } from "next-auth";
 import prisma from "@/app/libs/prisma";
 import { authOptions } from "@/app/libs/auth";
-import { OnRampTransaction } from "@/app/component/onRampTransactions";
-
 import { Metadata } from "next";
-
+import { OnRampTransaction } from "@/app/component/onRampTransactions";
 export const metadata: Metadata = {
   title: "Dashboard | Flowpay",
   description: "Dashboard for Flowpay digital wallet application",
@@ -41,14 +40,14 @@ async function getOnRampTransactions() {
       userId: Number(session?.user.id),
     },
     orderBy: {
-      StartTime: "desc",
+      startTime: "desc",
     },
     take: 5,
   });
   return txns.map((t: any) => ({
     time: t.startTime,
     amount: t.amount,
-    status:t.status,
+    status: t.status,
     provider: t.provider,
   }));
 }
@@ -62,7 +61,7 @@ export default async function DashboardPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
-            <span className="text-blue-600">Wallet </span>Dashboard !
+            <span className="text-blue-600">FlowPay </span>Dashboard
           </h1>
           <p className="mt-2 text-lg sm:text-xl text-slate-800">
             Manage your finances with ease
@@ -131,7 +130,7 @@ export default async function DashboardPage() {
               </p>
               <div className="pt-1">
                 <a
-                  href="/addmoney"
+                  href="/transfer"
                   className="bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600 transition-colors"
                 >
                   Add Money

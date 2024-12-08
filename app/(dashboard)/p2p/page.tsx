@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Fast and safe P2P transfers with Flowpay digital wallet application',
 }
 
-export default function () {
+export default function p2PTranscation () {
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 ">
       <div className="flex justify-center text-4xl mt-20 font-extrabold">

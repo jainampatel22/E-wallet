@@ -76,7 +76,8 @@ export async function p2p(to: string, amount: number) {
         fromUserId: Number(from),
         toUserId: toUser.id,
         amount,
-        StartTime: new Date(),
+    provider:"hdfc",
+        startTime: new Date(),
       },
     });
   });

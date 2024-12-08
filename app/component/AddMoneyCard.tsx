@@ -5,7 +5,7 @@ import { Card } from "./Card";
 import { Textinput } from "./TextInput";
 import { Select } from "./Select";
 import { Button } from "./Button"
-import { useRouter } from "next/navigation";
+
 
 const SUPPORTED_BANKS = [
   {
@@ -21,8 +21,8 @@ const SUPPORTED_BANKS = [
 export const AddMoney = () => {
   const [value, setValue] = useState(0);
   const [provider, setProvider] = useState(SUPPORTED_BANKS[0]?.name || "");
-  const router = useRouter();
-  const [redirectUrl, setRedirectUrl] = useState(
+ 
+  const [, setRedirectUrl] = useState(
     SUPPORTED_BANKS[0]?.redirectUrl,
   );
   return (

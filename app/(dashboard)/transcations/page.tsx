@@ -9,7 +9,20 @@ export const metadata: Metadata = {
   description: 'Track all your transactions effortlessly with Flowpay digital wallet application',
 }
 
-async function getsentP2PTranscations() {
+  
+  interface OnRampTransactionType {
+    time: Date;
+    amount: number;
+    status: string;
+    provider: string;
+  }
+  interface P2PTranscationType {
+    time: Date;
+    amount: number;
+    status: string;
+    provider: string;
+  }
+async function getsentP2PTranscations():Promise<P2PTranscationType[]> {
   const session = await getServerSession(authOptions);
   const txns = await prisma.p2PTranscation.findMany({
     where: {
@@ -17,15 +30,15 @@ async function getsentP2PTranscations() {
     },
   });
 
-  return txns.map((t: any) => ({
-    time: t.StartTime,
+  return txns.map((t) => ({
+    time: t.startTime,
     amount: t.amount,
-    status: "Completed",
+    status: "Success",
     provider: t.provider,
   }));
 }
 
-async function getreceivedP2PTranscations() {
+async function getreceivedP2PTranscations():Promise<P2PTranscationType[]> {
   const session = await getServerSession(authOptions);
   const txns = await prisma.p2PTranscation.findMany({
     where: {
@@ -33,24 +46,26 @@ async function getreceivedP2PTranscations() {
     },
   });
 
-  return txns.map((t: any) => ({
-    time: t.StartTime,
+  return txns.map((t) => ({
+    time: t.startTime,
     amount: t.amount,
-    status: "Completed",
+    status: "Success",
     provider: t.provider,
   }));
 }
 
-async function getOnRampTransactions(status: any) {
+async function getOnRampTransactions(status:string ):Promise<OnRampTransactionType[]> {
   const session = await getServerSession(authOptions);
+  console.log(status)
   const txns = await prisma.onRampTranscation.findMany({
     where: {
       userId: Number(session?.user?.id),
+      status:"Success"
      
     },
   });
-  return txns.map((t: any) => ({
-    time: t.StartTime,
+  return txns.map((t) => ({
+    time: t.startTime,
     amount: t.amount,
     status: t.status,
     provider: t.provider,
@@ -67,9 +82,9 @@ export default async function TransactionsPage() {
   ] = await Promise.all([
     getsentP2PTranscations(),
     getreceivedP2PTranscations(),
-    getOnRampTransactions("Completed"),
-    getOnRampTransactions("Pending"),
-    getOnRampTransactions("Failed"),
+    getOnRampTransactions("Success"),
+    getOnRampTransactions("Processing"),
+    getOnRampTransactions("Failure"),
   ]);
 
   return (

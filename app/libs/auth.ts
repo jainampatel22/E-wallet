@@ -23,7 +23,7 @@ export const authOptions = {
           });
 
           if (existingUser) {
-              const passwordValidation = await bcrypt.compare(credentials.password, existingUser.Password);
+              const passwordValidation = await bcrypt.compare(credentials.password, existingUser.password);
               if (passwordValidation) {
                   return {
                       id: existingUser.id.toString(),
@@ -38,7 +38,7 @@ export const authOptions = {
               const user = await prisma.user.create({
                   data: {
                       number: credentials.phone,
-                      Password: hashedPassword
+                      password: hashedPassword
                   }
               });
           
