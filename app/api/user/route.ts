@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/libs/auth";
-import { error } from "console";
+
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 export const GET =async()=>{
