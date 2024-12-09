@@ -6,7 +6,7 @@ export const GET =async()=>{
 const session = await getServerSession(authOptions)
 if(!session){
  return   NextResponse.json({
-        error:"You are Not Loggedin"
+        message:"You are Not Loggedin"
     })
 
 }
