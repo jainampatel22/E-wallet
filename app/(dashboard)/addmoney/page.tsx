@@ -7,8 +7,8 @@ import { OnRampTransaction } from "@/app/component/onRampTransactions";
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Transfer | Flowpay',
-  description: 'Transfer funds seamlessly with Flowpay digital wallet application',
+  title: 'Transfer | Wallet',
+  description: 'Transfer funds seamlessly with Wallet digital wallet application',
 }
 
 async function getBalance() {
@@ -46,7 +46,7 @@ export default async function addmoney () {
     <div className="w-full mt-10 ">
       <div className="text-2xl  md:text-4xl pt-8 mb-8 font-bold text-violet-600 flex flex-col items-center">
         <h1 className="text-3xl md:text-4xl font-extrabold text-slate-800">
-          <span className="text-blue-600">FlowPay </span>Transfer
+          <span className="text-blue-600">Wallet </span>Transfer
         </h1>
         <p className="mt-2 text-lg md:text-xl text-slate-800 font-normal">
           Transfer funds seamlessly

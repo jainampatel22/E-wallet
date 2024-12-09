@@ -6,8 +6,8 @@ import { authOptions } from "@/app/libs/auth";
 import { Metadata } from "next";
 import { OnRampTransaction } from "@/app/component/onRampTransactions";
 export const metadata: Metadata = {
-  title: "Dashboard | Flowpay",
-  description: "Dashboard for Flowpay digital wallet application",
+  title: "Dashboard | Wallet",
+  description: "Dashboard for Wallet digital wallet application",
 };
 
 import {
@@ -61,7 +61,7 @@ export default async function DashboardPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800">
-            <span className="text-blue-600">FlowPay </span>Dashboard
+            <span className="text-indigo-600">Wallet </span>Dashboard
           </h1>
           <p className="mt-2 text-lg sm:text-xl text-slate-800">
             Manage your finances with ease
@@ -126,7 +126,7 @@ export default async function DashboardPage() {
                 Add Funds
               </h3>
               <p className="text-gray-600 mb-4">
-                Top up your FlowPay wallet easily.
+                Top up your  Wallet easily.
               </p>
               <div className="pt-1">
                 <a
@@ -151,7 +151,7 @@ export default async function DashboardPage() {
               effectively.
             </p>
             <a
-              href="/transactions"
+              href="/transcations"
               className="text-purple-500 font-medium hover:text-purple-600 transition-colors"
             >
               View Detailed Analytics →
@@ -169,7 +169,7 @@ export default async function DashboardPage() {
             issues.
           </p>
           <a
-            href="/contact"
+            href="https://x.com/Jainam___patel" target="_blank"
             className="bg-indigo-600 text-white px-4 py-3 rounded-lg mt-1 hover:bg-indigo-700 transition-colors"
           >
             Contact Support

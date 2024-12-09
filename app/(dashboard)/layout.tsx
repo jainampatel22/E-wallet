@@ -14,8 +14,18 @@ export default async function Layout({
     redirect("/api/auth/signin");
   }
   return (
+    <>
+    <div className=" p-4  bg-indigo-600 text-white border-b-4  text-center">We are currently in the beta testing phase, so you might encounter some errors. 😊
+
+
+
+
+
+
+</div>
+    
     <div className="flex pt-14 bg-slate-100 overflow-hidden">
-      <MobileNav>
+       <MobileNav>
         <div className="w-32 md:w-60 md:border-r md:border-slate-300 min-h-svh flex-grow pt-28 md:mr-8 ml-4">
           <div className="flex flex-col gap-4">
             <SidebarItem href={"/dashboard"} title="Home" icon={<HomeIcon />} />
@@ -39,6 +49,7 @@ export default async function Layout({
       </MobileNav>
       <div className="flex-1 pb-10">{children}</div>
     </div>
+    </>
   );
 }
 
