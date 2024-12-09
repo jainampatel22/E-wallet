@@ -10,9 +10,10 @@ export default function HDFCTransactionPage() {
   const [isComplete, setIsComplete] = useState(false);
   const [message, setMessage] = useState("");
   const transactionProcessed = useRef(false);
-const [error,setError] = useState()
-console.log(error,setError)
+
+
   useEffect(() => {
+    
     const processTransaction = async () => {
       if (transactionProcessed.current) return;
       transactionProcessed.current = true;
@@ -32,8 +33,9 @@ console.log(error,setError)
         } else {
           setMessage("Invalid transaction amount.");
         }
-      } catch (error) {
+      } catch (message) {
         setMessage("Transaction failed. Please try again.");
+        console.log(message)
       } finally {
         setIsLoading(false);
       }
