@@ -10,7 +10,8 @@ export default function HDFCTransactionPage() {
   const [isComplete, setIsComplete] = useState(false);
   const [message, setMessage] = useState("");
   const transactionProcessed = useRef(false);
-
+const [error,setError] = useState()
+console.log(error,setError)
   useEffect(() => {
     const processTransaction = async () => {
       if (transactionProcessed.current) return;
