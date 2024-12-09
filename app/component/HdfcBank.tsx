@@ -34,7 +34,7 @@ export default function HDFCTransactionPage() {
           setMessage("Invalid transaction amount.");
         }
       } catch (message) {
-        setMessage("Transaction failed. Please try again.");
+        setMessage("Transaction . Please try again.");
         console.log(message)
       } finally {
         setIsLoading(false);

@@ -1,7 +1,7 @@
 import { Card } from "./Card";
-
-
-
+import Image from "next/image";
+import failed from '../fonts/th.jpg'
+import success from '../fonts/OIP.jpg' 
 export const OnRampTransaction = ({
   transactions,
   title = "Recent Transactions",
@@ -46,13 +46,13 @@ export const OnRampTransaction = ({
                     ? `- Rs ${t.amount / 100}`
                     : `+ Rs ${t.amount / 100}`}
                 </div>
-                <div className="text-sm">
-                  {t.status === "Completed" ? (
-                    <span className="text-green-500">Success</span>
-                  ) : t.status === "Pending" ? (
+                <div className="text-sm flex">
+                  {t.status === "Success" ? (
+                    <span className="text-green-500 flex gap-1"><Image src={success} alt="" width={20} height={20}/>Success</span>
+                  ) : t.status === "Proccessing" ? (
                     <span className="text-yellow-500">Pending</span>
                   ) : (
-                    <span className="text-red-500">Failed</span>
+                    <span className="text-red-500 flex gap-1"> <Image src={failed} alt="" width={20} height={20}/> Failed</span>
                   )}
                 </div>
               </div>
